@@ -1,4 +1,4 @@
-import 'package:cityscope/login_screen.dart';
+import 'package:cityscope/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CityScope App',
-      home: LoginScreen(),
+      home: StartScreen(),
     );
   }
 }
