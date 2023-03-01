@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text('SIGN UP'),
-      ),
+      appBar: AppBar(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -26,7 +23,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ],
           ),
         ),
-
       ),
     );
   }
