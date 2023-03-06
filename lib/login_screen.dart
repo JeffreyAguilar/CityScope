@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'forgot_page.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -48,7 +49,14 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPage()
+                        )
+                      );
+                    },
                     child: const Text(
                       'Forgot Password',
                       style: TextStyle(
