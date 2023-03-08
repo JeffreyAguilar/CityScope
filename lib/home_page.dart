@@ -8,11 +8,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 1;
+  int _currentIndex = 0;
+  List<Widget> body = const [
+    Icon(Icons.account_circle_sharp),
+    Icon(Icons.map),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _currentIndex = index;
     });
   }
 
@@ -26,6 +30,23 @@ class _HomePageState extends State<HomePage> {
         decoration: const BoxDecoration(
           
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Account',
+            icon: Icon(Icons.account_circle_sharp)
+          ),
+          BottomNavigationBarItem(
+            label: 'Map',
+            icon: Icon(Icons.map)
+          ),
+        ],
       ),
     );
   }
