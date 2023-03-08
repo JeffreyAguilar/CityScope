@@ -1,3 +1,4 @@
+import 'package:cityscope/google_map.dart';
 import 'package:cityscope/start_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CityScope App',
-      home: StartScreen(),
+      home: MapSample(),
     );
   }
 }

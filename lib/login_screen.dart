@@ -18,9 +18,7 @@ class _LoginPageState extends State<LoginPage> {
         title: const Text('LOGIN'),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-
-        ),
+        decoration: const BoxDecoration(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
