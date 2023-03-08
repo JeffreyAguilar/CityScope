@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-         color: Colors.white
+
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

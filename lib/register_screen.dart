@@ -18,7 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
         title: const Text('SIGN UP'),
       ),
       body: Container(
-        decoration: const BoxDecoration(color: Colors.white),
+        decoration: const BoxDecoration(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
