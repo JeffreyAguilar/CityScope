@@ -1,3 +1,5 @@
+import 'package:cityscope/account_info.dart';
+import 'package:cityscope/google_map.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,12 +11,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  List<Widget> body = const [
-    Icon(Icons.account_circle_sharp),
-    Icon(Icons.map),
+  final List<Widget> _body = const [
+    MapPage(),
+    AccountInfoPage(),
   ];
 
-  void _onItemTapped(int index) {
+  void _onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
@@ -23,28 +25,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          
-        ),
-      ),
+      body: _body[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
-        onTap: _onItemTapped,
+        onTap: _onTabTapped,
         items: const [
-          BottomNavigationBarItem(
-            label: 'Account',
-            icon: Icon(Icons.account_circle_sharp)
-          ),
           BottomNavigationBarItem(
             label: 'Map',
             icon: Icon(Icons.map)
+          ),
+          BottomNavigationBarItem(
+            label: 'Account',
+            icon: Icon(Icons.account_circle_sharp)
           ),
         ],
       ),
