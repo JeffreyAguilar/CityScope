@@ -3,6 +3,7 @@ import 'package:cityscope/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -24,7 +25,12 @@ class MapPageState extends State<MapPage> {
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    zoom: 17,
+  );
+
+  static const CameraPosition _kCurrentLocation = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 17,
   );
 
   @override
@@ -59,16 +65,33 @@ class MapPageState extends State<MapPage> {
     );
   }
 
+  Future<Position> getUserCurrentLocation() async {
+    await Geolocator.requestPermission()
+        .then((value) {})
+        .onError((error, stackTrace) async {
+      await Geolocator.requestPermission();
+      print("ERROR" + error.toString());
+    });
+    return await Geolocator.getCurrentPosition();
+  }
+
   @override
   Widget build(BuildContext context) {
     BorderRadiusGeometry radius = const BorderRadius.only(
-    topLeft: Radius.circular(25.0),
-    topRight: Radius.circular(25.0),
-  );
-  
+      topLeft: Radius.circular(25.0),
+      topRight: Radius.circular(25.0),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Map'),
+        title: const Text(
+          'Map',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: const Color.fromRGBO(143, 217, 201, 1.0),
       ),
       body: SlidingUpPanel(
         borderRadius: radius,
@@ -76,6 +99,7 @@ class MapPageState extends State<MapPage> {
         backdropEnabled: true,
         collapsed: Container(
           decoration: BoxDecoration(
+            color: Colors.transparent,
             borderRadius: radius,
           ),
           child: const Center(
@@ -150,7 +174,7 @@ class MapPageState extends State<MapPage> {
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: LatLng(lat, lng),
-          zoom: 12,
+          zoom: 17,
         ),
       ),
     );

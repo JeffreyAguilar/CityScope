@@ -14,8 +14,15 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text('SIGN UP'),
+        backgroundColor: const Color.fromRGBO(143, 217, 201, 1.0),
+        title: const Text(
+          'SIGN UP',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(),
@@ -26,8 +33,9 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: EdgeInsets.all(10),
               child: TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Username',),
+                  border: OutlineInputBorder(),
+                  labelText: 'Username',
+                ),
               ),
             ),
             const Padding(
@@ -70,8 +78,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
+                backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
               ),
-              child: const Text('Sign In'),
+              child: const Text(
+                'Sign In',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),

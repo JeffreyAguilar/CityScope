@@ -19,8 +19,8 @@ class _StartScreenState extends State<StartScreen> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color.fromARGB(255, 19, 239, 255),
-              Color.fromARGB(255, 20, 196, 255),
+              Color.fromARGB(255, 141, 255, 230),
+              Color.fromARGB(255, 60, 249, 208),
             ],
           ),
         ),
@@ -49,8 +49,16 @@ class _StartScreenState extends State<StartScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
+                    backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
                   ),
-                  child: const Text('Login'),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -66,8 +74,16 @@ class _StartScreenState extends State<StartScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
+                    backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
                   ),
-                  child: const Text('Sign Up'),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             )
