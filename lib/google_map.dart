@@ -171,5 +171,4 @@ class MapPageState extends State<MapPage> {
 
     _setMarker(LatLng(lat, lng));
   }
-
 } //end of class MapSampleState file

@@ -1,5 +1,7 @@
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'package:location/location.dart';
 
 class LocationService{
   final String key = 'AIzaSyCvSYXWN6tZBh7zYyMgPn7Oip7CpRb4pQ8';
@@ -26,6 +28,6 @@ class LocationService{
     print(results);
     return results;
 
-  } 
+  }
 
 }
