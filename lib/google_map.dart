@@ -3,7 +3,6 @@ import 'package:cityscope/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:geolocator/geolocator.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -65,16 +64,6 @@ class MapPageState extends State<MapPage> {
     );
   }
 
-  Future<Position> getUserCurrentLocation() async {
-    await Geolocator.requestPermission()
-        .then((value) {})
-        .onError((error, stackTrace) async {
-      await Geolocator.requestPermission();
-      print("ERROR" + error.toString());
-    });
-    return await Geolocator.getCurrentPosition();
-  }
-
   @override
   Widget build(BuildContext context) {
     BorderRadiusGeometry radius = const BorderRadius.only(
@@ -96,6 +85,7 @@ class MapPageState extends State<MapPage> {
       body: SlidingUpPanel(
         borderRadius: radius,
         minHeight: 35,
+        maxHeight: 500,
         backdropEnabled: true,
         collapsed: Container(
           decoration: BoxDecoration(
@@ -104,7 +94,7 @@ class MapPageState extends State<MapPage> {
           ),
           child: const Center(
             child: Icon(
-              Icons.arrow_drop_up,
+              Icons.expand_less,
               color: Colors.black,
             ),
           ),
@@ -174,11 +164,12 @@ class MapPageState extends State<MapPage> {
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: LatLng(lat, lng),
-          zoom: 17,
+          zoom: 16.5,
         ),
       ),
     );
 
     _setMarker(LatLng(lat, lng));
   }
+
 } //end of class MapSampleState file

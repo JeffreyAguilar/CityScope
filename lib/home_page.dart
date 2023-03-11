@@ -38,8 +38,8 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.map)
           ),
           BottomNavigationBarItem(
-            label: 'Account',
-            icon: Icon(Icons.account_circle_sharp)
+            label: 'Library',
+            icon: Icon(Icons.menu_rounded)
           ),
         ],
       ),
