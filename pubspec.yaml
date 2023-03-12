@@ -40,6 +40,9 @@ dependencies:
   http: ^0.13.5
   sliding_up_panel: ^2.0.0+1
   firebase_core: ^2.7.1
+  cloud_firestore: ^4.4.4
+  firebase_auth: ^4.2.10
+  firebase_analytics: ^10.1.5
   
 
 dev_dependencies:

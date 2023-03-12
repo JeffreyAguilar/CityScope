@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -10,6 +11,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _userNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmpasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,37 +35,41 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.all(10),
+             Padding(
+              padding: const EdgeInsets.all(10),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _userNameController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Username',
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10),
+             Padding(
+              padding: const EdgeInsets.all(10),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _emailController,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter valid email'),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10),
+             Padding(
+              padding: const EdgeInsets.all(10),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _passwordController,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter a secure password'),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10),
+             Padding(
+              padding: const EdgeInsets.all(10),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _confirmpasswordController,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Confirm Password',
                     hintText: 'Enter your secure password'),

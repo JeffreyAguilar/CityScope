@@ -1,12 +1,12 @@
-import 'package:cityscope/start_screen.dart';
+import 'package:cityscope/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MainPage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
 
   // This widget is the root of your application.
   @override
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CityScope App',
-      home: StartScreen(),
+      home: LoginPage(),
     );
   }
 }
