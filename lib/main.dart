@@ -1,4 +1,3 @@
-import 'package:cityscope/google_map.dart';
 import 'package:cityscope/start_screen.dart';
 import 'package:flutter/material.dart';
 
