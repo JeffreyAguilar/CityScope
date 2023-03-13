@@ -64,7 +64,7 @@ class _LibraryTabState extends State<LibraryTab> {
               ),
             ),
             const SizedBox(
-              height: 200,
+              height: 100,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 1.0),
@@ -154,7 +154,7 @@ class _LibraryTabState extends State<LibraryTab> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 100),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
