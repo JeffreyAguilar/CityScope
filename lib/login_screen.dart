@@ -43,15 +43,15 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 70,
-              width: 190,
+              height: 250,
+              width: 200,
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2.0),
               child: const Center(
                 child: Text(
                   'CityScope',
                   style: TextStyle(
-                    fontSize: 34,
-
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
@@ -124,13 +124,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 130),
+            const SizedBox(height: 140),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const RegisterPage()));

@@ -1,4 +1,4 @@
-import 'package:cityscope/account_info.dart';
+import 'package:cityscope/library_tab.dart';
 import 'package:cityscope/google_map.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _body = const [
     MapPage(),
-    AccountInfoPage(),
+    LibraryTab(),
   ];
 
   void _onTabTapped(int index) {

@@ -3,6 +3,8 @@ import 'home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'login_screen.dart';
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
@@ -35,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: _userNameController,
@@ -45,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: _emailController,
@@ -55,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Enter valid email'),
               ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: _passwordController,
@@ -65,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Enter a secure password'),
               ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: _confirmpasswordController,
@@ -77,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );

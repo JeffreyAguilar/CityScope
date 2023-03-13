@@ -23,7 +23,7 @@ class MapPageState extends State<MapPage> {
   int _polygonIDCounter = 1;
 
   static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(40.76977, -73.98267),
     zoom: 17,
   );
 
@@ -36,7 +36,7 @@ class MapPageState extends State<MapPage> {
   void initState() {
     super.initState();
 
-    _setMarker(LatLng(37.42796133580664, -122.085749655962));
+    _setMarker(LatLng(40.76977, -73.98267));
   }
 
   void _setMarker(LatLng point) {
