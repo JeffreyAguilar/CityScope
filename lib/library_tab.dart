@@ -56,7 +56,12 @@ class _LibraryTabState extends State<LibraryTab> {
               height: 15,
             ),
             const Center(
-              child: Text('USERNAME'),
+              child: Text(
+                'USERNAME',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
             ),
             const SizedBox(
               height: 200,
@@ -65,7 +70,7 @@ class _LibraryTabState extends State<LibraryTab> {
               padding: const EdgeInsets.only(top: 1.0),
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 236, 236, 236),
+                  color: Color.fromARGB(255, 246, 244, 244),
                   border: Border.symmetric(
                     horizontal: BorderSide(
                       color: Colors.black,
@@ -95,7 +100,7 @@ class _LibraryTabState extends State<LibraryTab> {
             ),
             Container(
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 236, 236, 236),
+                color: Color.fromARGB(255, 246, 244, 244),
                 border: Border.symmetric(
                   horizontal: BorderSide(
                     color: Colors.black,
@@ -123,7 +128,7 @@ class _LibraryTabState extends State<LibraryTab> {
             ),
             Container(
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 236, 236, 236),
+                color: Color.fromARGB(255, 246, 244, 244),
                 border: Border.symmetric(
                   horizontal: BorderSide(
                     color: Colors.black,
@@ -144,9 +149,7 @@ class _LibraryTabState extends State<LibraryTab> {
                   ),
                   IconButton(
                     icon: const Icon(Icons.chevron_right),
-                    onPressed: () {
-                      
-                    },
+                    onPressed: () {},
                   ),
                 ],
               ),
