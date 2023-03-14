@@ -50,20 +50,6 @@ class MapPageState extends State<MapPage> {
     });
   }
 
-  void _setPolygon() {
-    final String polygonIDVal = 'polygon_$_polygonIDCounter';
-    _polygonIDCounter++;
-
-    _polygons.add(
-      Polygon(
-        polygonId: PolygonId(polygonIDVal),
-        points: polygonLatLngs,
-        strokeWidth: 2,
-        fillColor: Colors.transparent,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     BorderRadiusGeometry radius = const BorderRadius.only(
@@ -140,12 +126,6 @@ class MapPageState extends State<MapPage> {
                 initialCameraPosition: _kGooglePlex,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
-                },
-                onTap: (point) {
-                  setState(() {
-                    polygonLatLngs.add(point);
-                    _setPolygon();
-                  });
                 },
               ),
             ),
