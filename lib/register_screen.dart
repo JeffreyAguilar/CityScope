@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'login_screen.dart';
 import 'package:cityscope/firebase/auth.dart';
+import 'login_screen.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -19,18 +19,50 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmpasswordController = TextEditingController();
   String? errorMessage = '';
   bool isLogin = true;
+  late String documentID;
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
+      if(_passwordController.text.trim() == _confirmpasswordController.text.trim()){
       await Auth().createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+      }
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
       });
     }
+
+    addUserDetails(
+      _userNameController.text.trim(),
+      _emailController.text.trim(),
+      _passwordController.text.trim(),
+      FirebaseAuth.instance.currentUser!.uid,
+    );
+  }
+
+  Future addUserDetails(String userName, String email, String password, String id) async {
+    await FirebaseFirestore.instance
+    .collection('users')
+    .doc(FirebaseAuth.instance.currentUser?.uid)
+    .set({
+      'username' : userName,
+      'email' : email,
+      'password' : password,
+      'ID' : id,
+    });
+  }
+
+  @override
+  void dispose() {
+    _userNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmpasswordController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -52,6 +84,20 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              height: 210,
+              width: 200,
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2.0),
+              child: const Center(
+                child: Text(
+                  'CityScope',
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
@@ -95,10 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(height: 35),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
+                createUserWithEmailAndPassword();
               },
               style: ElevatedButton.styleFrom(
                 padding:
@@ -117,6 +160,28 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
+            const SizedBox(height: 60),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
+                    },
+                    child: const Text(
+                      'Already Have An Account?',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline),
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
       ),
