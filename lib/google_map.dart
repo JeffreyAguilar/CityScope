@@ -3,6 +3,7 @@ import 'package:cityscope/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -151,4 +152,6 @@ class MapPageState extends State<MapPage> {
 
     _setMarker(LatLng(lat, lng));
   }
+
+
 } //end of class MapSampleState file

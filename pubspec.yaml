@@ -41,8 +41,10 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   firebase_core: ^2.7.1
   cloud_firestore: ^4.4.4
-  firebase_auth: ^4.2.10
+  firebase_auth: ^4.3.0
   firebase_analytics: ^10.1.5
+  geolocator: ^9.0.2
+  lottie: ^2.3.0
   
 
 dev_dependencies:

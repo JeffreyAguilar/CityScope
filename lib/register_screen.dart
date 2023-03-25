@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 210,
+              height: 100,
               width: 200,
               padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2.0),
               child: const Center(
@@ -138,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Enter your secure password'),
               ),
             ),
-            const SizedBox(height: 35),
+            const SizedBox(height: 25),
             ElevatedButton(
               onPressed: () {
                 createUserWithEmailAndPassword();
@@ -160,7 +160,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 60),
+            const SizedBox(height: 10),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
