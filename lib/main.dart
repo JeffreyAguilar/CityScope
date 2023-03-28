@@ -1,3 +1,4 @@
+import 'package:cityscope/favorites_tab.dart';
 import 'package:cityscope/login_screen.dart';
 import 'package:cityscope/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           height: 200.0,
           width: 200.0,
-          child: LottieBuilder.asset('assets/animations/splash.json'),
+          child: LottieBuilder.asset('assets/animations/pinanimation.json'),
         ),
       ),
     );

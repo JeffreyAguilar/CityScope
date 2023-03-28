@@ -20,24 +20,30 @@ class MapPageState extends State<MapPage> {
   Set<Marker> _markers = Set<Marker>();
   Set<Polygon> _polygons = Set<Polygon>();
   List<LatLng> polygonLatLngs = <LatLng>[];
-
   int _polygonIDCounter = 1;
+  bool serviceEnabled = false;
+  bool hasPermission = false;
+  late LocationPermission permission;
+  late Position position;
+  late StreamSubscription<Position> positionStream;
+  static double lat = 0;
+  static double long = 0;
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(40.76977, -73.98267),
     zoom: 17,
   );
 
-  static const CameraPosition _kCurrentLocation = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+  static final CameraPosition _kCurrentLocation = CameraPosition(
+    target: LatLng(lat, long),
     zoom: 17,
   );
 
   @override
   void initState() {
+    checkGps();
     super.initState();
-
-    _setMarker(LatLng(40.76977, -73.98267));
+    _setMarker(LatLng(lat, long));
   }
 
   void _setMarker(LatLng point) {
@@ -153,5 +159,71 @@ class MapPageState extends State<MapPage> {
     _setMarker(LatLng(lat, lng));
   }
 
+  checkGps() async {
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (serviceEnabled) {
+      permission = await Geolocator.checkPermission();
 
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          print('Location permissions are denied');
+        } else if (permission == LocationPermission.deniedForever) {
+          print("'Location permissions are permanently denied");
+        } else {
+          hasPermission = true;
+        }
+      } else {
+        hasPermission = true;
+      }
+
+      if (hasPermission) {
+        setState(() {
+          //refresh the UI
+        });
+
+        getLocation();
+      }
+    } else {
+      print("GPS Service is not enabled, turn on GPS location");
+    }
+
+    setState(() {
+      //refresh the UI
+    });
+  }
+
+  getLocation() async {
+    position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print(position.longitude); //Output: 80.24599079
+    print(position.latitude); //Output: 29.6593457
+
+    lat = position.latitude;
+    long = position.longitude;
+
+    setState(() {
+      //refresh UI
+    });
+
+    LocationSettings locationSettings = const LocationSettings(
+      accuracy: LocationAccuracy.high, //accuracy of the location data
+      distanceFilter: 100, //minimum distance (measured in meters) a
+      //device must move horizontally before an update event is generated;
+    );
+
+    StreamSubscription<Position> positionStream =
+        Geolocator.getPositionStream(locationSettings: locationSettings)
+            .listen((Position position) {
+      print(position.longitude); //Output: 80.24599079
+      print(position.latitude); //Output: 29.6593457
+
+      lat = position.latitude;
+      long = position.longitude;
+
+      setState(() {
+        //refresh UI on update
+      });
+    });
+  }
 } //end of class MapSampleState file

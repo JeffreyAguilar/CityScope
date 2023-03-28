@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cityscope/location_service.dart';
 
 class FavoritesTab extends StatefulWidget {
   const FavoritesTab({super.key});
@@ -14,7 +15,9 @@ class _FavoritesTabState extends State<FavoritesTab> {
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(143, 217, 201, 1.0),
       ),
-      body: Container(),
+      body: Container(
+
+      ),
     );
   }
 }
