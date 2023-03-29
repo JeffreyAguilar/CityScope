@@ -16,6 +16,7 @@ class _LibraryTabState extends State<LibraryTab> {
 
   Future<void> signOut() async {
     await Auth().signOut();
+    print('successfully logged out');
   }
 
   Widget _userName() {
@@ -192,10 +193,7 @@ class _LibraryTabState extends State<LibraryTab> {
             const SizedBox(height: 100),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
+                signOut();
               },
               style: ElevatedButton.styleFrom(
                 padding:

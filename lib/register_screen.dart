@@ -41,6 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
       _passwordController.text.trim(),
       FirebaseAuth.instance.currentUser!.uid,
     );
+    print('successful registration');
   }
 
   Future addUserDetails(String userName, String email, String password, String id) async {

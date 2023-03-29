@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
         errorMessage = e.message;
       });
     }
+    print('successful sign in');
   }
 
   @override
@@ -111,10 +112,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
+                signInWithEmailAndPassword();
               },
               style: ElevatedButton.styleFrom(
                 padding:
