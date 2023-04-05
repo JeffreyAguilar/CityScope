@@ -130,7 +130,7 @@ class MapPageState extends State<MapPage> {
                 mapType: MapType.normal,
                 markers: _markers,
                 polygons: _polygons,
-                initialCameraPosition: _kGooglePlex,
+                initialCameraPosition: _kCurrentLocation,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
                 },

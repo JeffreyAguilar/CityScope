@@ -39,12 +39,11 @@ class _RegisterPageState extends State<RegisterPage> {
       _userNameController.text.trim(),
       _emailController.text.trim(),
       _passwordController.text.trim(),
-      FirebaseAuth.instance.currentUser!.uid,
     );
     print('successful registration');
   }
 
-  Future addUserDetails(String userName, String email, String password, String id) async {
+  Future addUserDetails(String userName, String email, String password) async {
     await FirebaseFirestore.instance
     .collection('users')
     .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -52,7 +51,6 @@ class _RegisterPageState extends State<RegisterPage> {
       'username' : userName,
       'email' : email,
       'password' : password,
-      'ID' : id,
     });
   }
 

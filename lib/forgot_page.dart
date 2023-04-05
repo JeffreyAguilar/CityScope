@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ForgotPage extends StatefulWidget {
   const ForgotPage({super.key});
@@ -9,6 +10,22 @@ class ForgotPage extends StatefulWidget {
 
 class _ForgotPageState extends State<ForgotPage> {
   final _emailController = TextEditingController();
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _emailController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+  }
+
+  Widget _checkEmail(){
+    return const SnackBar(
+      content: Text('Please check email for reset link.'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +68,7 @@ class _ForgotPageState extends State<ForgotPage> {
                   ),
                   backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
                 ),
-                onPressed: () {},
+                onPressed: passwordReset,
                 child: const Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: 10.0,

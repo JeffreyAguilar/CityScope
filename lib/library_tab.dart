@@ -1,4 +1,5 @@
 import 'package:cityscope/favorites_tab.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cityscope/firebase/auth.dart';
@@ -20,31 +21,33 @@ class _LibraryTabState extends State<LibraryTab> {
   }
 
   Widget _userName() {
-    return Text(user?.email ?? 'User Email');
+    return Text(
+      user?.email ?? 'User Email',
+      style: const TextStyle(color: Colors.grey),
+    );
   }
 
   Widget _signOutButton() {
     return ElevatedButton(
-              onPressed: () {
-                signOut();
-              },
-              style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
-              ),
-              child: const Text(
-                'Sign Out',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            );
+      onPressed: () {
+        signOut();
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
+      ),
+      child: const Text(
+        'Sign Out',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
 
   @override
@@ -91,13 +94,8 @@ class _LibraryTabState extends State<LibraryTab> {
             const SizedBox(
               height: 15,
             ),
-            const Center(
-              child: Text(
-                'USERNAME',
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
+             Center(
+              child: _userName()
             ),
             const SizedBox(
               height: 100,
