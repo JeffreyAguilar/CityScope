@@ -130,7 +130,7 @@ class MapPageState extends State<MapPage> {
                 mapType: MapType.normal,
                 markers: _markers,
                 polygons: _polygons,
-                initialCameraPosition: _kCurrentLocation,
+                initialCameraPosition: _kGooglePlex,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
                 },
@@ -215,8 +215,8 @@ class MapPageState extends State<MapPage> {
     StreamSubscription<Position> positionStream =
         Geolocator.getPositionStream(locationSettings: locationSettings)
             .listen((Position position) {
-      print(position.longitude); //Output: 80.24599079
-      print(position.latitude); //Output: 29.6593457
+      print(position.longitude); 
+      print(position.latitude); 
 
       lat = position.latitude;
       long = position.longitude;
@@ -226,4 +226,5 @@ class MapPageState extends State<MapPage> {
       });
     });
   }
+
 } //end of class MapSampleState file

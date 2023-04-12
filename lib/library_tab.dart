@@ -27,29 +27,6 @@ class _LibraryTabState extends State<LibraryTab> {
     );
   }
 
-  Widget _signOutButton() {
-    return ElevatedButton(
-      onPressed: () {
-        signOut();
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        backgroundColor: const Color.fromRGBO(171, 245, 229, 1.0),
-      ),
-      child: const Text(
-        'Sign Out',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
