@@ -45,6 +45,12 @@ dependencies:
   firebase_analytics: ^10.1.5
   geolocator: ^9.0.2
   lottie: ^2.3.0
+  flutter_typeahead: ^4.3.1
+  geocoding: ^2.1.0
+  uuid: ^3.0.7
+  flutter_polyline_points: ^1.0.0
+  flutter_riverpod: ^2.3.5
+  flip_card: ^0.7.0
   
 
 dev_dependencies:

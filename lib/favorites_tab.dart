@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cityscope/location_service.dart';
 
 class FavoritesTab extends StatefulWidget {
   const FavoritesTab({super.key});
