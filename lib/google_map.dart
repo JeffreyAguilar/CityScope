@@ -8,7 +8,6 @@ import 'package:cityscope/providers/search_places.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:http/http.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -378,7 +377,7 @@ class MapPageState extends ConsumerState<MapPage> {
                                       fontWeight: FontWeight.w400,
                                     ),
                                     ),
-                                    SizedBox(height: 5.0),
+                                    const SizedBox(height: 5.0),
                                     Container(
                                       width: 125,
                                       child: ElevatedButton(
@@ -401,7 +400,7 @@ class MapPageState extends ConsumerState<MapPage> {
                       : Container(),
                       getDirections ? 
                       Padding(
-                        padding: EdgeInsets.fromLTRB(15.0, 40.0, 15.0, 5),
+                        padding: const EdgeInsets.fromLTRB(15.0, 40.0, 15.0, 5),
                         child: Column(children: [
                           Container(
                             height: 50.0,
@@ -411,14 +410,14 @@ class MapPageState extends ConsumerState<MapPage> {
                             ),
                             child: TextFormField(
                               controller: _originController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
                                       horizontal: 20.0, vertical: 15.0),
                                   border: InputBorder.none,
                                   hintText: 'Origin'),
                             ),
                           ),
-                          SizedBox(height: 3.0),
+                          const SizedBox(height: 3.0),
                           Container(
                             height: 50.0,
                             decoration: BoxDecoration(
@@ -428,7 +427,7 @@ class MapPageState extends ConsumerState<MapPage> {
                             child: TextFormField(
                               controller: _destinationController,
                               decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
+                                  contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 20.0, vertical: 15.0),
                                   border: InputBorder.none,
                                   hintText: 'Destination',
@@ -461,7 +460,7 @@ class MapPageState extends ConsumerState<MapPage> {
                                                 _setPolyline(directions[
                                                     'polyline_decoded']);
                                               },
-                                              icon: Icon(Icons.search)),
+                                              icon: const Icon(Icons.search)),
                                           IconButton(
                                               onPressed: () {
                                                 setState(() {
@@ -473,7 +472,7 @@ class MapPageState extends ConsumerState<MapPage> {
                                                   _polylines = {};
                                                 });
                                               },
-                                              icon: Icon(Icons.close))
+                                              icon: const Icon(Icons.close))
                                         ],
                                       ))),
                             ),
@@ -624,7 +623,7 @@ class MapPageState extends ConsumerState<MapPage> {
 
   Widget buildListItem(AutoCompleteResult placeItem, searchFlag) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
       child: GestureDetector(
         onTapDown: (_) {
           FocusManager.instance.primaryFocus?.unfocus();
