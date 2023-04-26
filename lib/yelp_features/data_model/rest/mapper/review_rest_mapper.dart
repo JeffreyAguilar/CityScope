@@ -1,6 +1,6 @@
-import 'package:yelpexplorer/features/business/data/rest/model/review_rest_model.dart';
-import 'package:yelpexplorer/features/business/domain/model/review.dart';
-import 'package:yelpexplorer/features/business/domain/model/user.dart';
+import 'package:cityscope/yelp_features/data_model/rest/mod/review_rest_model.dart';
+import 'package:cityscope/yelp_features/domain/mod/review.dart';
+import 'package:cityscope/yelp_features/domain/mod/user.dart';
 
 extension ReviewListMapper on List<ReviewRestModel> {
   List<Review> toDomainModels() {

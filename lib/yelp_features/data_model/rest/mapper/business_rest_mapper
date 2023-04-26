@@ -1,8 +1,8 @@
 import "package:collection/collection.dart";
 import 'package:intl/intl.dart';
-import 'package:yelpexplorer/core/const.dart' as Const;
-import 'package:yelpexplorer/features/business/data/rest/model/business_rest_model.dart';
-import 'package:yelpexplorer/features/business/domain/model/business.dart';
+import 'package:cityscope/core/const.dart' as Const;
+import 'package:cityscope/yelp_features/data_model/rest/mod/business_rest_model.dart';
+import 'package:cityscope/yelp_features/domain/mod/business.dart';
 
 extension BusinessListRestMapper on List<BusinessRestModel> {
   List<Business> toDomainModel() {
