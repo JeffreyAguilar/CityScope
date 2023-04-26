@@ -30,7 +30,7 @@ class _BusinessListScreenState extends State<BusinessListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("YelpExplorer-Flutter"),
+        title: Text("CityScope"),
       ),
       body: BlocConsumer<BusinessListBloc, BusinessListState>(
         listener: (context, state) {

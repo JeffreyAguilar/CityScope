@@ -1,6 +1,6 @@
 import 'package:cityscope/yelp_features/data_model/rest/datasource/business_rest_datasource.dart';
 import 'package:cityscope/yelp_features/data_model/rest/mapper/business_rest_mapper';
-import 'package:cityscope/yelp_features/data_model/rest/mapper/review_rest_mapper';
+import 'package:cityscope/yelp_features/data_model/rest/mapper/review_rest_mapper.dart';
 import 'package:cityscope/yelp_features/data_model/rest/mod/business_rest_model.dart';
 import 'package:cityscope/yelp_features/data_model/rest/mod/review_rest_model.dart';
 import 'package:cityscope/yelp_features/domain/mod/business.dart';

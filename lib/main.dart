@@ -1,53 +1,26 @@
-import 'package:cityscope/favorites_tab.dart';
-import 'package:cityscope/login_screen.dart';
-import 'package:cityscope/widget_tree.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cityscope/core/injection.dart' as Injection;
+import 'package:cityscope/yelp_features/business_ui/business_list/business_list_bloc.dart';
+import 'package:cityscope/yelp_features/business_ui/business_list/business_list_screen.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MainPage());
+  await Injection.setup();
+  return runApp(CityScope());
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
-
-  // This widget is the root of your application.
+class CityScope extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CityScope App',
-      home: WidgetTree(),
-    );
-  }
-}
-
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 5)).then((value) => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const WidgetTree())));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          height: 200.0,
-          width: 200.0,
-          child: LottieBuilder.asset('assets/animations/pinanimation.json'),
-        ),
+    final ThemeData theme = ThemeData.dark();
+    return MaterialApp(
+      theme: theme.copyWith(
+        appBarTheme: AppBarTheme(color: Colors.red[700]),
+      ),
+      home: BlocProvider(
+        create: (context) => Injection.getIt<BusinessListBloc>(),
+        child: BusinessListScreen(),
       ),
     );
   }
