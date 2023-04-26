@@ -50,6 +50,7 @@ dependencies:
   flutter_riverpod: ^2.3.5
   flip_card: ^0.7.0
   flutter_rating_stars: ^1.0.3+4
+  image_picker: ^0.8.7+4
   
 
 dev_dependencies:

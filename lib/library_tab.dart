@@ -1,9 +1,12 @@
+import 'dart:io';
 import 'package:cityscope/favorites_tab.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cityscope/firebase/auth.dart';
+import 'package:flutter/services.dart';
 import 'login_screen.dart';
+import 'package:image_picker/image_picker.dart';
 
 class LibraryTab extends StatefulWidget {
   const LibraryTab({super.key});
@@ -14,6 +17,7 @@ class LibraryTab extends StatefulWidget {
 
 class _LibraryTabState extends State<LibraryTab> {
   final User? user = Auth().currentUser;
+  File? image;
 
   Future<void> signOut() async {
     await Auth().signOut();
@@ -25,6 +29,20 @@ class _LibraryTabState extends State<LibraryTab> {
       user?.email ?? 'User Email',
       style: const TextStyle(color: Colors.grey),
     );
+  }
+
+  Future _pickImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (image == null) {
+      return;
+    }
+
+    final imageTemp = File(image.path);
+
+    setState(() {
+      this.image = imageTemp;
+    });
   }
 
   @override
@@ -195,4 +213,5 @@ class _LibraryTabState extends State<LibraryTab> {
       ),
     );
   }
+
 }

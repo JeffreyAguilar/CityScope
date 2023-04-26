@@ -849,7 +849,7 @@ class MapPageState extends ConsumerState<MapPage> {
         tilt: 45.0)));
   }
 
-  _nearbyPlacesList(index) {
+   _nearbyPlacesList(index) {
     return AnimatedBuilder(
       animation: _pageController,
       builder: (BuildContext context, Widget? widget) {
