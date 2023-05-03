@@ -25,31 +25,3 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 5)).then((value) => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const WidgetTree())));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          height: 200.0,
-          width: 200.0,
-          child: LottieBuilder.asset('assets/animations/pinanimation.json'),
-        ),
-      ),
-    );
-  }
-}

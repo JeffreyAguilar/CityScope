@@ -5,6 +5,7 @@ import 'dart:ui' as ui;
 import 'package:cityscope/models/auto_complete_model.dart';
 import 'package:cityscope/providers/location_service.dart';
 import 'package:cityscope/providers/search_places.dart';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -351,7 +352,7 @@ class MapPageState extends ConsumerState<MapPage> {
                         },
                       ),
                       searchFlag.searchToggle
-                          ? allSearchResults.allReturnedResults.length != 0
+                          ? allSearchResults.allReturnedResults.isNotEmpty
                               ? Positioned(
                                   top: 100.0,
                                   left: 15.0,
@@ -519,7 +520,7 @@ class MapPageState extends ConsumerState<MapPage> {
                                   children: [
                                     Expanded(
                                         child: Slider(
-                                            max: 2000.0,
+                                            max: 1000.0,
                                             min: 100.0,
                                             value: radiusValue,
                                             onChanged: (newVal) {
@@ -574,7 +575,7 @@ class MapPageState extends ConsumerState<MapPage> {
                                               });
                                             },
                                             icon: const Icon(
-                                              Icons.near_me,
+                                              Icons.search,
                                               color: Colors.blue,
                                             ))
                                         : IconButton(
@@ -632,7 +633,7 @@ class MapPageState extends ConsumerState<MapPage> {
                                             radiusSlider = false;
                                             pressedNear = false;
                                             cardTapped = false;
-                                            radiusValue = 3000.0;
+                                            radiusValue = 500.0;
                                             _circles = {};
                                             _markers = {};
                                             allFavoritePlaces = [];
@@ -647,7 +648,7 @@ class MapPageState extends ConsumerState<MapPage> {
                           : Container(),
                       pressedNear
                           ? Positioned(
-                              bottom: 20.0,
+                              top: 400.0,
                               child: Container(
                                 height: 200.0,
                                 width: MediaQuery.of(context).size.width,
@@ -659,6 +660,194 @@ class MapPageState extends ConsumerState<MapPage> {
                                       return _nearbyPlacesList(index);
                                     }),
                               ))
+                          : Container(),
+                          cardTapped
+                          ? Positioned(
+                            top: 100.0,
+                            left: 7.0,
+                            child: FlipCard(
+                              front: Container(
+                              height: 225.0,
+                              width: 175.0,
+                             decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                ),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 150.0,
+                                        width: 175.0,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(8),
+                                            topRight: Radius.circular(8),
+                                          ),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                              placeImg != '' ? 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=$placeImg&key=$key'
+                                              : 'https://pic.onlinewebfonts.com/svg/img_546302.png'),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(7.0),
+                                          width: 175.0,
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              const Text(
+                                        'Address: ',
+                                        style: TextStyle(
+                                            fontFamily: 'WorkSans',
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Container(
+                                          width: 105.0,
+                                          child: Text(
+                                            tappedPlaceDetail[
+                                                    'formatted_address'] ??
+                                                'none given',
+                                            style: const TextStyle(
+                                                fontFamily: 'WorkSans',
+                                                fontSize: 11.0,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.fromLTRB(7.0, 0.0, 7.0, 0.0),
+                                          width: 175.0,
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              const Text(
+                                        'Contact: ',
+                                        style: TextStyle(
+                                            fontFamily: 'WorkSans',
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Container(
+                                          width: 105.0,
+                                          child: Text(
+                                            tappedPlaceDetail[
+                                                    'formatted_phone_number'] ??
+                                                'none given',
+                                            style: const TextStyle(
+                                                fontFamily: 'WorkSans',
+                                                fontSize: 11.0,
+                                                fontWeight: FontWeight.w400),
+                                          ))
+                                            ],
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              back: Container(
+                                height: 300.0,
+                                width: 225.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.95),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                            isReviews = true;
+                                            isPhotos = false;
+                                          });
+                                            },
+                                            child: AnimatedContainer(
+                                              duration: const Duration(milliseconds: 700),
+                                              curve: Curves.easeIn,
+                                              padding: const EdgeInsets.fromLTRB(7.0, 4.0, 7.0, 4.0),
+                                              decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(11.0),
+                                              color: isReviews
+                                                  ? Colors.green.shade300
+                                                  : Colors.white),
+                                              child: Text(
+                                                'Reviews',
+                                                style: TextStyle(
+                                                  color: isReviews
+                                                    ? Colors.white
+                                                    : Colors.black87,
+                                                fontFamily: 'WorkSans',
+                                                fontSize: 12.0,
+                                                fontWeight: FontWeight.w500
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                            isReviews = false;
+                                            isPhotos = true;
+                                          });
+                                            },
+                                            child: AnimatedContainer(
+                                              duration: const Duration(milliseconds: 700),
+                                              curve: Curves.easeIn,
+                                              padding: const EdgeInsets.fromLTRB(7.0, 4.0, 7.0, 4.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                  BorderRadius.circular(11.0),
+                                              color: isPhotos
+                                                  ? Colors.green.shade300
+                                                  : Colors.white
+                                              ),
+                                              child: Text(
+                                                'Photos',
+                                                style: TextStyle(
+                                                  color: isPhotos
+                                                    ? Colors.white
+                                                    : Colors.black87,
+                                                fontFamily: 'WorkSans',
+                                                fontSize: 12.0,
+                                                fontWeight: FontWeight.w500
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 250.0,
+                                      child: isReviews ? ListView(
+                                        children: [
+                                          if (isReviews &&
+                                                tappedPlaceDetail['reviews'] !=
+                                                    null)
+                                              ...tappedPlaceDetail['reviews']!
+                                                  .map((e) {
+                                                return _buildReviewItem(e);
+                                              })
+                                        ],
+                                      ) : _buildPhotoGallery(tappedPlaceDetail['photos'] ?? []),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
                           : Container(),
                     ],
                   ),
@@ -871,7 +1060,7 @@ class MapPageState extends ConsumerState<MapPage> {
           cardTapped = !cardTapped;
           if (cardTapped) {
             tappedPlaceDetail = await LocationService()
-                .getPlace(allFavoritePlaces[index]['place_id']);
+                .getNearByPlace(allFavoritePlaces[index]['place_id']);
             setState(() {});
           }
           moveCameraSlightly();
@@ -993,5 +1182,185 @@ class MapPageState extends ConsumerState<MapPage> {
         ),
       ),
     );
+  }
+
+  _buildReviewItem(review) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+          child: Row(
+            children: [
+              Container(
+                height: 35.0,
+                width: 35.0,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: NetworkImage(review['profile_photo_url']),
+                        fit: BoxFit.cover)),
+              ),
+             const SizedBox(width: 4.0),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Container(
+                  width: 160.0,
+                  child: Text(
+                    review['author_name'],
+                    style: const TextStyle(
+                        fontFamily: 'WorkSans',
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                const SizedBox(height: 3.0),
+                RatingStars(
+                  value: review['rating'] * 1.0,
+                  starCount: 5,
+                  starSize: 7,
+                  valueLabelColor: const Color(0xff9b9b9b),
+                  valueLabelTextStyle: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'WorkSans',
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 9.0),
+                  valueLabelRadius: 7,
+                  maxValue: 5,
+                  starSpacing: 2,
+                  maxValueVisibility: false,
+                  valueLabelVisibility: true,
+                  animationDuration: const Duration(milliseconds: 1000),
+                  valueLabelPadding:
+                      const EdgeInsets.symmetric(vertical: 1, horizontal: 4),
+                  valueLabelMargin: const EdgeInsets.only(right: 4),
+                  starOffColor: const Color(0xffe7e8ea),
+                  starColor: Colors.yellow,
+                )
+              ])
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: Text(
+              review['text'],
+              style: const TextStyle(
+                  fontFamily: 'WorkSans',
+                  fontSize: 11.0,
+                  fontWeight: FontWeight.w400),
+            ),
+          ),
+        ),
+        Divider(color: Colors.grey.shade600, height: 1.0)
+      ],
+    );
+  }
+
+  _buildPhotoGallery(photoElement) {
+    if (photoElement == null || photoElement.length == 0) {
+      showBlankCard = true;
+      return Container(
+        child: const Center(
+          child: Text(
+            'No Photos',
+            style: TextStyle(
+                fontFamily: 'WorkSans',
+                fontSize: 12.0,
+                fontWeight: FontWeight.w500),
+          ),
+        ),
+      );
+    } else {
+      var placeImg = photoElement[photoGalleryIndex]['photo_reference'];
+      var maxWidth = photoElement[photoGalleryIndex]['width'];
+      var maxHeight = photoElement[photoGalleryIndex]['height'];
+      var tempDisplayIndex = photoGalleryIndex + 1;
+
+      return Column(
+        children: [
+          const SizedBox(height: 10.0),
+          Container(
+              height: 200.0,
+              width: 200.0,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          'https://maps.googleapis.com/maps/api/place/photo?maxwidth=$maxWidth&maxheight=$maxHeight&photo_reference=$placeImg&key=$key'),
+                      fit: BoxFit.cover))),
+          const SizedBox(height: 10.0),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (photoGalleryIndex != 0) {
+                    photoGalleryIndex = photoGalleryIndex - 1;
+                  } else {
+                    photoGalleryIndex = 0;
+                  }
+                });
+              },
+              child: Container(
+                width: 40.0,
+                height: 20.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(9.0),
+                    color: photoGalleryIndex != 0
+                        ? Colors.green.shade500
+                        : Colors.grey.shade500),
+                child: const Center(
+                  child: Text(
+                    'Prev',
+                    style: TextStyle(
+                        fontFamily: 'WorkSans',
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ),
+            Text(
+              '$tempDisplayIndex/${photoElement.length}',
+              style: const TextStyle(
+                  fontFamily: 'WorkSans',
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w500),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (photoGalleryIndex != photoElement.length - 1) {
+                    photoGalleryIndex = photoGalleryIndex + 1;
+                  } else {
+                    photoGalleryIndex = photoElement.length - 1;
+                  }
+                });
+              },
+              child: Container(
+                width: 40.0,
+                height: 20.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(9.0),
+                    color: photoGalleryIndex != photoElement.length - 1
+                        ? Colors.green.shade500
+                        : Colors.grey.shade500),
+                child: const Center(
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                        fontFamily: 'WorkSans',
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ),
+          ])
+        ],
+      );
+    }
   }
 }
