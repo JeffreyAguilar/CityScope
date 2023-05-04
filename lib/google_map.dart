@@ -262,11 +262,6 @@ class MapPageState extends ConsumerState<MapPage> {
                   children: <Widget>[
                     Expanded(
                       child: TextFormField(
-                        onTap: () {
-                          setState(() {
-                            searchToggle = true;
-                          });
-                        },
                         controller: _searchController,
                         textCapitalization: TextCapitalization.words,
                         decoration: InputDecoration(
