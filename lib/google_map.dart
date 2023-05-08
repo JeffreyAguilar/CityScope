@@ -250,7 +250,7 @@ class MapPageState extends ConsumerState<MapPage> {
           ),
         ),
         panel: const Center(
-          child: Text('This is the info tab'),
+          child: Text('This is the directions tab'),
         ),
         body: SingleChildScrollView(
           child: Container(
