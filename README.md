@@ -1,4 +1,4 @@
-# Cityscope
+# CityScope
 
 A new Flutter project.
 
