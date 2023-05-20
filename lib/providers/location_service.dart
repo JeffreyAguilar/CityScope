@@ -8,7 +8,7 @@ import '../models/auto_complete_model.dart';
 
 class LocationService{
 
-  final String key = 'AIzaSyCvSYXWN6tZBh7zYyMgPn7Oip7CpRb4pQ8';
+  final String key = 'INSERT API KEY HERE';
   final String types = 'geocode';
 
   Future<String> getPlaceID(String? input) async {

@@ -66,7 +66,7 @@ class MapPageState extends ConsumerState<MapPage> {
   String tokenKey = '';
   var selectedPlaceDetails;
 
-  final key = 'AIzaSyCvSYXWN6tZBh7zYyMgPn7Oip7CpRb4pQ8';
+  final key = 'INSERT API KEY HERE';
 
   /* _kGooglePlex's coordinates are the coordinates for NYIT's Manhattan Campus. */
 
