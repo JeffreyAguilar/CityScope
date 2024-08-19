@@ -51,7 +51,7 @@ We welcome contributions! If you have any improvements or new features you'd lik
 5. Open a pull request.
 
 ## CityScope Documentation
-see documentation [here](CityScope/Final Technical Report.pdf)
+see documentation [here](Final Technical Report.pdf)
 
 Thank you for using CityScope! If you have any questions or feedback, feel free to open an issue on GitHub.
 
