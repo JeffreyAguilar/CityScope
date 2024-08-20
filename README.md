@@ -28,6 +28,11 @@ Built with Flutter, ensuring a seamless experience on both iOS and Android.
 -**Detailed Information**:
 Offers detailed information about each location, including the name, address, hours of operation, rating, reviews, pictures, and contact info.
 
+![Home Screen](sampleimages/img1.png)
+![CityScope View](sampleimages/img2.png)
+![Detailed Information](sampleimages/img3.png)
+![Example of Reviews](sampleimages/img4.png)
+
 ## Installation
 
 To get started with CityScope, follow these steps:
