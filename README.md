@@ -9,7 +9,7 @@ Welcome to CityScope! A cross platform mobile app built by our team with Flutter
 -[Installation](#installation)
 -[Usage](#usage)
 -[Contributing](#contributing)
--[Documentation](#documentation)
+-[Documentation](#cityscopedocumentation)
 
 ## Introduction
 
