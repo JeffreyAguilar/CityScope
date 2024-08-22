@@ -18,7 +18,7 @@ CityScope is designed to help users discover interesting services and places aro
 ## Features
 
 -**Location Based Services**:
-Automatically fetches and displays nearby services based on the user's current location, offers a location search function and provides directions for users.
+Automatically fetches and displays nearby services based on the user's current location, offers a location search function and provides directions for users provided by Google Maps API.
 
 -**Recommendations**:
 Provides personalized recommendations for places to visit.
@@ -28,6 +28,10 @@ Built with Flutter, ensuring a seamless experience on both iOS and Android.
 
 -**Detailed Information**:
 Offers detailed information about each location, including the name, address, hours of operation, rating, reviews, pictures, and contact info.
+
+-**Account Creation**:
+
+Users are required to make an account in order to use the app. Users are able to save their favorite locations, past reviews, edit acccount information, and etc. Our app uses Google Firebase to store our users data.
 
 ![Home Screen](sampleimages/img1.png)
 ![CityScope View](sampleimages/img2.png)
