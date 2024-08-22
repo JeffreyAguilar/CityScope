@@ -9,7 +9,7 @@ Welcome to CityScope! A cross platform mobile app built by our team with Flutter
 -[Installation](#installation)
 -[Usage](#usage)
 -[Contributing](#contributing)
--[Documentation](#cityscopedocumentation)
+-[Documentation](#documentation)
 
 ## Introduction
 
@@ -56,7 +56,7 @@ We welcome contributions! If you have any improvements or new features you'd lik
 4. Push to the branch.
 5. Open a pull request.
 
-## CityScope Documentation
+## Documentation
 See documentation [here](https://github.com/JeffreyAguilar/CityScope/blob/main/Final_Technical_Report.pdf)
 
 Thank you for using CityScope! If you have any questions or feedback, feel free to open an issue on GitHub.
