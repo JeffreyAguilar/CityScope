@@ -30,7 +30,6 @@ Built with Flutter, ensuring a seamless experience on both iOS and Android.
 Offers detailed information about each location, including the name, address, hours of operation, rating, reviews, pictures, and contact info.
 
 -**Account Creation**:
-
 Users are required to make an account in order to use the app. Users are able to save their favorite locations, past reviews, edit acccount information, and etc. Our app uses Google Firebase to store our users data.
 
 ![Home Screen](sampleimages/img1.png)
